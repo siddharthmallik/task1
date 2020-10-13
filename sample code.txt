@@ -1,0 +1,71 @@
+delete using id
+===================
+def delete_single_retailer(store_mid):
+    global col_retailer
+    connect_retailer_db()
+    myquery = {"_id": ObjectId(store_mid)}
+    col_retailer.delete_one(myquery)
+    return
+
+
+edit using mongodb id
+-------------
+def activate_retailer(store_mid):
+    global col_retailer
+    connect_retailer_db()
+    key_to_be_update = 'livestatus'
+    col_retailer.update_one({"_id": ObjectId(store_mid)}, {'$set' : {key_to_be_update : True}})
+    return
+
+
+edit using own id
+--------------------------
+def change_specific_key(id):
+    global recipcol
+    connect_db()
+    key_to_be_update = 'Lowes New record'
+    recipcol.update_one({'Lowes Store Number':id}, {'$set' : {key_to_be_update : 7876}})
+    return
+
+
+
+edit multiple 
+------------------
+def edit_retailer(store_mid, store_id, store_name, livestatus):
+    global col_retailer
+    connect_retailer_db()
+    col_retailer.update_one({"_id": ObjectId(store_mid)}, {'$set' : { "storeid" : store_id, "storename" : store_name, "livestatus" : livestatus}})
+    return
+
+
+
+
+<form class="form-horizontal col-lg-3 col-md-4 col-sm-4 col-xs-4" method="POST" action="installer/activate/{{Installer['_id']}}">
+ 		<div class="form-group"> <button type="submit" class="btn btn-success btn-sm">Activate</button> </div>
+ 		</form>
+---------------------------------------------------------------
+@app.route("/installer/delete/<store_mid>", methods=['POST'])
+def deleteInstaller(store_mid):
+    store_id = store_mid
+    databaseorchestrator.delete_single_installer(store_id)
+    return redirect(url_for('installerWrapper'))
+
+@app.route("/installer/activate/<store_mid>", methods=['POST'])
+def activateInstaller(store_mid):
+    store_id = store_mid
+    databaseorchestrator.activate_installer(store_id)
+    return redirect(url_for('installerWrapper'))
+
+
+
+
+TASK
+===============================
+1. edit single record by mongodb id
+2. edit multiple records by mongodb id
+3. edit single record using your own user created id
+4. delete one record by mongodb id
+---------------------------------------------------
+
+5. edit multiple records using your own user created id
+6. delete specific field in collection (not the entire collection)

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- <link href="style.css" rel="stylesheet"> -->
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <title>Curd Operation</title>
+
+      <style>
+         label{
+             display: inline-block;
+             margin-bottom: .5rem;
+             position: absolute;
+             padding: 7px 10px;
+             margin-right: 0px;
+             width: 6rem;
+             border-radius: 5px 0px 0px 5px;
+             }
+         .form-control{
+                padding: 1.12rem 1rem 1.12rem 6.2rem;
+
+         }
+         .card-title{
+            border-radius: 3px;
+            text-transform: uppercase;
+         }
+         .sec1{
+            border-bottom:1px solid #e3e3e3;
+         }
+
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         {% block formTemp %}  {% endblock %}
+         {% block editTemp %}  {% endblock %}
+      </div>
+
+
+      <!-- for local file -->
+      <!--<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>-->
+
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+   </body>
+</html>

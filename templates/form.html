@@ -1,0 +1,118 @@
+{% extends "index.html" %}
+{% block formTemp %}
+<div class="container">
+   <div class="row">
+      <div class="col-lg-12 text-center m-4">
+         <h2>INSERT DATA TO DB</h2>
+      </div>
+   </div>
+   <hr>
+   <form class="form-horizontal col-xs-12 col-lg-12 col-md-12 col-sm-12" method="POST" action="{{url_for('update_empRecords')}}" name="wform" >
+      <div class="row sec1 mb-4">
+         <div class="form-group col-lg-4 col-sm-12">
+            <label for="uname" class="text-light bg bg-info">Name</label>
+            <input type="text" class="form-control" id="uname" placeholder="Enter Name" name="uname" required>
+         </div>
+         <div class="form-group col-4">
+            <label for="email" class="text-light bg bg-info">Mail Id </label>
+            <input type="text" class="form-control" id="email" placeholder="Mail Id"  name="email" required>
+         </div>
+         <div class="form-group col-4 float-right ">
+            <button type="Submit" class="btn btn-primary">Submit Record</button>
+         </div>
+      </div>
+   </form>
+
+   <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+  </div>
+</div>
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">  1  </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  <label class="form-check-label" for="inlineCheckbox2">  2  </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+  <label class="form-check-label" for="inlineCheckbox3">  3 </label>
+</div>
+
+
+
+   <!--
+      <div class="container">
+         <h1>Getting data from DB</h1>
+         <table class="table table-hover">
+            <tr>
+               <td class="info">ID</td>
+               <td class="info">NAME</td>
+               <td class="info">DESIGNATION</td>
+               <td class="info">PHONE NUMBER</td>
+               <td class="info">ADDRESS</td>
+               <td class="info">EMAIL_ID</td>
+            </tr>
+         {% for p in emplist %}
+            <tr>
+               <td>{{p["_id"]}}</td>
+               <td>{{p["name"]}}</td>
+               <td>{{p["designation"]}}</td>
+               <td>{{p["contact"]}}</td>
+               <td>{{p["address"]}}</td>
+               <td>{{p["mailId"]}}</td>
+            </tr>
+         {% endfor %}
+         </table>
+      </div>
+      -->
+   
+   <div class="row">
+      <div class="col-lg-12 text-center m-4">
+         <h2>RETRIEVE DATA FROM DB</h2>
+      </div>
+      
+      {% for p in emplist %}
+      
+      <div class="col-sm-6 mb-3">
+         <div class="card">
+            <div class="card-body">
+               <h5 class="card-title bg bg-dark text-light p-1">NAME : {{p["name"]}}</h5>
+               <table class="mb-4">
+                  <tr><td>ID : </td><td>{{p["_id"]}}</td></tr>
+                  <tr><td>MAIL ID : </td><td>{{p["mailId"]}}</td></tr>
+               </table>
+               <div class="row">
+                  <form method="POST" action="edit/{{p['_id']}}" class="col-lg-3 col-md-3">
+                     <div class="form-group ">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update</button>
+                     </div>
+                 <!--  </form>
+                  <form method="POST" action="delete/{{p['_id']}}" class="col-lg-3 col-md-3">
+                     <div class="form-group ">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                     </div>
+                  </form>
+                  <form method="POST" action="remove_field/{{p['_id']}}" class="col-lg-6 col-md-6">
+                     <div class="form-group ">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-minus-circle" aria-hidden="true"></i> Clear Details</button>
+                     </div> -->
+                  </form>
+               </div>
+               <!-- <a href="#" class="btn btn-primary">Edit</a>
+               <a href="#" class="btn btn-primary">Delete</a> -->
+            </div>
+         </div>
+      </div>
+      
+      {% endfor %}
+   
+   </div>
+</div>
+{% endblock %}
